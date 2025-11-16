@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Notes App</string>
+    <string name="title_tv">Title</string>
+    <string name="description_tv">My Note Descriprion</string>
+    <string name="date_tv">Date</string>
+    <string name="entering_the_title">Enter the title</string>
+    <string name="entering_your_notes">Enter your Notes</string>
+</resources>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="searchview_background">#BA1C1B1B</color>
+    <color name="background">#EE131111</color>
+    <color name="color1">#78A9BF</color>
+    <color name="color2">#8ADCD4</color>
+    <color name="color3">#808FE1</color>
+    <color name="color4">#A47BED</color>
+
+
+</resources>

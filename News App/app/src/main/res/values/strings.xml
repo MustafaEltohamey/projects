@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">News App</string>
+    <string name="arrow_right_content_description">go forward</string>
+    <string name="arrow_left_content_description">go back</string>
+    <string name="finish_boarding_screens">Finish</string>
+    <string name="top_image_section">App Icon</string>
+    <string name="search_hint_for_searchbar">Search for news</string>
+    <string name="description_picture_of_the_article">Picture of the article</string>
+    <string name="description_clock_icon">Clock Icon</string>
+    <string name="bookmarksScreen_title">Bookmarks</string>
+    <string name="arrowback_desc">Back to the previous screen</string>
+    <string name="star_desc">save as bookmarks article</string>
+    <string name="share_desc">Share with others</string>
+    <string name="earth_desc">Open in browser</string>
+</resources>

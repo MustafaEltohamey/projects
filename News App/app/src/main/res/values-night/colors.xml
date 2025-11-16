@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="display_small">#DCDADA</color>
+    <color name="text_medium">#D4D3E1</color>
+    <color name="white">#000</color>
+    <color name="black">#FFF</color>
+</resources>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:background="@color/background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddActivity">
+
+    <Toolbar
+        android:id="@+id/tb"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="100dp">
+
+        <ImageView
+            android:id="@+id/done_Iv"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@drawable/done"
+            android:layout_gravity="end"
+            android:padding="8dp" />
+
+    </Toolbar>
+
+    <LinearLayout
+        android:layout_below="@+id/tb"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <EditText
+            android:id="@+id/tv_insertTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_marginTop="45dp"
+            android:hint="@string/entering_the_title"
+            android:textColorHint="#494747"
+            />
+
+        <EditText
+            android:id="@+id/tv_insertDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:textStyle="normal"
+            android:hint="@string/entering_your_notes"
+            android:textColorHint="#494747"
+            />
+
+    </LinearLayout>
+
+</RelativeLayout>
