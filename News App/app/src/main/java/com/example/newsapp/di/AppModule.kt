@@ -8,8 +8,10 @@ import com.example.newsapp.data.local.NewsDatabase
 import com.example.newsapp.data.remote.BASE_URL
 import com.example.newsapp.data.remote.NewsApi
 import com.example.newsapp.data.remote.repository.GetNewsRepositoryIml
+import com.example.newsapp.data.remote.repository.LocalNewsRepositoryImp
 import com.example.newsapp.domain.manager.DataStoreManager
 import com.example.newsapp.domain.repository.GetNewsRepository
+import com.example.newsapp.domain.repository.LocalNewsRepository
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import dagger.Module
 import dagger.Provides
@@ -45,6 +47,12 @@ object AppModule {
     fun provideNewsRepoObj(
         newsApi: NewsApi
     ): GetNewsRepository = GetNewsRepositoryIml(newsApi)
+
+    @Provides
+    @Singleton
+    fun provideLocalNewsRepoObj(
+        dao: NewsDao
+    ) : LocalNewsRepository = LocalNewsRepositoryImp(dao)
 
     @Provides
     @Singleton
