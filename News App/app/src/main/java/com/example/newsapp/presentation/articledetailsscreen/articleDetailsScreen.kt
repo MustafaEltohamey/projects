@@ -19,6 +19,10 @@ import androidx.compose.material.icons.outlined.Star
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.derivedStateOf
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -35,9 +39,11 @@ import com.example.newsapp.utils.Dimens._248Dp
 import com.example.newsapp.utils.Dimens._32Dp
 import com.example.newsapp.utils.Dimens._6Dp
 import androidx.core.net.toUri
+import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import coil.size.Size
+import com.example.newsapp.domain.model.ArticleUi
 import com.example.newsapp.utils.textEnhancement
 
 @Composable
@@ -47,8 +53,17 @@ fun ArticleDetailsScreen(
     title: String? = null,
     content: String? = null,
     url: String? = null,
-    urlToImage: String? = null
+    urlToImage: String? = null,
+    source: String? = null,
+    publishedAt: String? = null
 ) {
+
+    val savedNewsViewModel : SaveNewsViewModel = hiltViewModel()
+   // val savedArticles by savedNewsViewModel.articles.collectAsState()
+
+//    val isSaved by remember(savedArticles, url) {
+//        derivedStateOf { savedArticles.any { it.url == url } }
+//    }
 
     val context = LocalContext.current
     Column (
@@ -78,7 +93,17 @@ fun ArticleDetailsScreen(
             Icon(
                 modifier = Modifier
                     .clickable {
+                        val article = ArticleUi(
+                            id = 0,
+                            title = title ?: "",
+                            content = content ?: "",
+                            url = url ?: "",
+                            urlToImage = urlToImage ?: "",
+                            source = source ?: "",
+                            publishedAt = publishedAt ?: ""
+                        )
 
+                        savedNewsViewModel.toggleSaveArticle(article)
                     },
                 imageVector =Icons.Outlined.Star,
                 contentDescription = stringResource(id = R.string.star_desc)

@@ -56,8 +56,10 @@ fun ArticleCard(
                 val content = Uri.encode(article.content)
                 val url = Uri.encode(article.url)
                 val urlToImage = Uri.encode(article.urlToImage)
+                val source = Uri.encode(article.source)
+                val publishedAt = Uri.encode(article.publishedAt)
                 navController.navigate(
-                    route = "${Route.DetailsScreen.route}?title=$title&content=$content&url=$url&urlToImage=$urlToImage"
+                    route = "${Route.DetailsScreen.route}?title=$title&content=$content&url=$url&urlToImage=$urlToImage&source=$source&publishedAt=$publishedAt"
                 )
             },
         verticalAlignment = Alignment.CenterVertically,
