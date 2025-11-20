@@ -5,10 +5,9 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "news")
 data class ArticleUi(
-    @PrimaryKey(autoGenerate = true)
-    val id : Int = 0,
     val title: String,
     val content: String,
+    @PrimaryKey
     val url: String,
     val urlToImage: String,
     val source: String,

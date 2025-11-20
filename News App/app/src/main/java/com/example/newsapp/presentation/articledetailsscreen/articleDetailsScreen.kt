@@ -1,6 +1,7 @@
 package com.example.newsapp.presentation.articledetailsscreen
 
 import android.content.Intent
+import android.net.Uri
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -65,6 +66,7 @@ fun ArticleDetailsScreen(
 //        derivedStateOf { savedArticles.any { it.url == url } }
 //    }
 
+    val decodedUrl =  Uri.decode(url ?: "")
     val context = LocalContext.current
     Column (
         modifier = modifier
@@ -94,13 +96,12 @@ fun ArticleDetailsScreen(
                 modifier = Modifier
                     .clickable {
                         val article = ArticleUi(
-                            id = 0,
-                            title = title ?: "",
-                            content = content ?: "",
-                            url = url ?: "",
-                            urlToImage = urlToImage ?: "",
-                            source = source ?: "",
-                            publishedAt = publishedAt ?: ""
+                            title = Uri.decode(title ?: ""),
+                            content = Uri.decode(content ?: ""),
+                            url = decodedUrl,
+                            urlToImage = Uri.decode(urlToImage ?: ""),
+                            source = Uri.decode(source ?: ""),
+                            publishedAt = Uri.decode(publishedAt ?: "")
                         )
 
                         savedNewsViewModel.toggleSaveArticle(article)

@@ -1,5 +1,6 @@
 package com.example.newsapp.presentation.articledetailsscreen
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.newsapp.domain.model.ArticleUi
@@ -17,32 +18,32 @@ class SaveNewsViewModel @Inject constructor(
 
     val articles = repository.getArticles().stateIn(
         scope = viewModelScope,
-        started = SharingStarted.WhileSubscribed(),
+        started = SharingStarted.Eagerly,
         initialValue = emptyList()
     )
 
-    fun insertArticle(article: ArticleUi) {
-        viewModelScope.launch {
-            repository.insert(article)
-        }
-    }
-
-    fun deleteArticle(article: ArticleUi) {
-        viewModelScope.launch {
-            repository.delete(article)
-        }
-    }
-
-    fun isArticleSaved(url: String?): Boolean {
-        return articles.value.any { it.url == url }
-    }
+//    fun isArticleSaved(url: String?): Boolean {
+//        return articles.value.any { it.url == url }
+//    }
 
     fun toggleSaveArticle(article: ArticleUi) {
         viewModelScope.launch {
-            if (isArticleSaved(article.url)) {
+            val cleanUrl = article.url.trim()
+
+            val existingArticle = articles.value.find {
+                it.url.trim() == cleanUrl
+            }
+
+            Log.d("SaveNewsViewModel", "Looking for URL: $cleanUrl")
+            Log.d("SaveNewsViewModel", "Saved articles count: ${articles.value.size}")
+            Log.d("SaveNewsViewModel", "Existing article found: ${existingArticle != null}")
+
+            if (existingArticle != null) {
                 repository.delete(article)
+                Log.d("SaveNewsViewModel", "Article deleted: ${article.title}")
             } else {
                 repository.insert(article)
+                Log.d("SaveNewsViewModel", "Article inserted: ${article.title}")
             }
         }
     }

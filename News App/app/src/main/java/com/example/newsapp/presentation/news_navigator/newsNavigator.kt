@@ -60,24 +60,30 @@ fun NewsNavigator() {
             }
 
             composable(
-                route =Route.DetailsScreen.route + "?title={title}&content={content}&url={url}&urlToImage={urlToImage}",
+                route =Route.DetailsScreen.route + "?title={title}&content={content}&url={url}&urlToImage={urlToImage}&source={source}&publishedAt={publishedAt}",
                 arguments = listOf(
                     navArgument(name = "title") { type = NavType.StringType },
                     navArgument(name = "content") { type = NavType.StringType },
                     navArgument(name = "url") { type = NavType.StringType },
-                    navArgument(name = "urlToImage") { type = NavType.StringType }
+                    navArgument(name = "urlToImage") { type = NavType.StringType },
+                    navArgument(name = "source") { type = NavType.StringType },
+                    navArgument(name = "publishedAt") { type = NavType.StringType }
                 )
             ) { backStackEntry ->
                 val title = backStackEntry.arguments?.getString("title")
                 val content = backStackEntry.arguments?.getString("content")
                 val url = backStackEntry.arguments?.getString("url")
                 val urlToImage = backStackEntry.arguments?.getString("urlToImage")
+                val source = backStackEntry.arguments?.getString("source")
+                val publishedAt = backStackEntry.arguments?.getString("publishedAt")
                 ArticleDetailsScreen(
                     navController = navController,
                     title = title,
                     content = content,
                     url = url,
-                    urlToImage = urlToImage
+                    urlToImage = urlToImage,
+                    source = source,
+                    publishedAt = publishedAt
                 )
             }
 
