@@ -6,10 +6,10 @@ import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.currentBackStackEntryAsState
 
 
 data class BottomNavigationItem(
@@ -27,24 +27,31 @@ fun BottomNavigationBar(
      bottomNavigationItem: List<BottomNavigationItem>,
      navHostController: NavHostController
 ) {
-    val isSelected = rememberSaveable {
-        mutableIntStateOf(0)
-    }
+
+    val navBackStackEntry by navHostController.currentBackStackEntryAsState()
+    val currentDestination = navBackStackEntry?.destination
+
     NavigationBar (
         containerColor =  MaterialTheme.colorScheme.surface,
     ){
 
 
-        bottomNavigationItem.forEachIndexed{ index, item ->
+        bottomNavigationItem.forEach{ item ->
+            val selected = item.route == currentDestination?.route
             NavigationBarItem(
-                selected = isSelected.intValue == index,
+                selected = selected,
                 onClick = {
-                    isSelected.intValue = index
-                    navHostController.navigate(item.route)
+                    navHostController.navigate(item.route) {
+                        popUpTo(navHostController.graph.startDestinationId) {
+                            saveState = true
+                        }
+                        launchSingleTop = true
+                        restoreState = true
+                    }
                 },
                 icon = {
                     Icon(
-                        imageVector = if (isSelected.intValue == index) item.selectedIcon
+                        imageVector = if (selected) item.selectedIcon
                             else item.unSelectedIcon,
                         contentDescription = item.contentDescription,
                     )
