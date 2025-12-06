@@ -7,9 +7,12 @@ import kotlinx.coroutines.flow.Flow
 interface GetNewsRepository {
 
     fun getNews (
+        sources: List<String>
+    ): Flow<PagingData<Article>>
+
+    fun searchNews (
         query: String,
-        sources: List<String>? = null,
-        domains: List<String>? = null)
-    : Flow<PagingData<Article>>
+        sources: List<String>
+    ): Flow<PagingData<Article>>
 
 }

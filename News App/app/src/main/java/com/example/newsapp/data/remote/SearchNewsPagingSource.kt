@@ -4,18 +4,25 @@ import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.example.newsapp.data.remote.dto.Article
 
-
-class NewsPagingSource (
+class SearchNewsPagingSource (
     private val newsApi: NewsApi,
+    private val query: String,
     private val sources: String
-) : PagingSource <Int, Article>() {
+): PagingSource<Int, Article>() {
+    override fun getRefreshKey(state: PagingState<Int, Article>): Int? {
+        return state.anchorPosition?.let { anchorPage ->
+            val page = state.closestPageToPosition(anchorPage)
+            page?.prevKey?.plus(1) ?: page?.nextKey?.minus(1)
+        }
+    }
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Article> {
         val page = params.key ?: 1
 
 
         return try {
-            val response = newsApi.getNews(
+            val response = newsApi.searchNews(
+                query = query,
                 sources = sources,
                 page = page)
 
@@ -29,15 +36,7 @@ class NewsPagingSource (
         } catch (e: Exception) {
             LoadResult.Error(e)
         }
-        }
-
-    override fun getRefreshKey(state: PagingState<Int, Article>): Int? {
-        return state.anchorPosition?.let { pos ->
-            val page = state.closestPageToPosition(pos)
-            page?.prevKey?.plus(1) ?: page?.nextKey?.minus(1)
-        }
     }
 
+
 }
-
-

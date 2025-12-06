@@ -12,10 +12,8 @@ class HomeScreenViewModel @Inject constructor (
     private val repo : GetNewsRepository
 ): ViewModel() {
 
-    //listOf("bbc-news", "abc-news", "al-jazeera-english")
 
     val news = repo.getNews(
-        query = "global",
         sources =  listOf(
             "abc-news",
             "al-jazeera-english",
@@ -33,7 +31,6 @@ class HomeScreenViewModel @Inject constructor (
             "the-wall-street-journal",
             "engadget",
             "bloomberg",
-        ) ,
-        domains = null
+        )
     ).cachedIn(viewModelScope)
 }

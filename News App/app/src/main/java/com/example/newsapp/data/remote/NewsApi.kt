@@ -13,12 +13,15 @@ interface NewsApi {
 
     @GET("everything")
     suspend fun getNews(
-        @Query("q") query: String, // REQUIRED - cannot be empty
-        @Query("sources") sources: String? = null,
-        @Query("domains") domains: String? = null,
-        @Query("language") language: String = "en",
-        @Query("sortBy") sortBy: String = "publishedAt",
-        @Query("pageSize") pageSize: Int = 15,
+        @Query("sources") sources: String,
+        @Query("page") page: Int,
+        @Query("apiKey") apiKey: String = API_KEY
+    ): NewsResponse
+
+    @GET("everything")
+    suspend fun searchNews(
+        @Query("q") query: String,
+        @Query("sources") sources: String,
         @Query("page") page: Int,
         @Query("apiKey") apiKey: String = API_KEY
     ): NewsResponse

@@ -72,14 +72,15 @@ fun SearchBarSection(
             ),
             textStyle = MaterialTheme.typography.bodyLarge,
         )
-
-        Box(
-            modifier = Modifier
-                .matchParentSize()
-                .clickable {
-                    onClick?.invoke()
-                }
-        )
+        if (readOnly) {
+            Box(
+                modifier = Modifier
+                    .matchParentSize()
+                    .clickable {
+                        onClick?.invoke()
+                    }
+            )
+        }
     }
 
 }

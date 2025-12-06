@@ -25,7 +25,7 @@ class SearchScreenViewModel @Inject constructor(
         if (q.isEmpty())
             flowOf(PagingData.empty())
         else {
-            repo.getNews(
+            repo.searchNews(
                 query = q,
                 sources =  listOf(
                     "abc-news",
@@ -44,8 +44,7 @@ class SearchScreenViewModel @Inject constructor(
                     "the-wall-street-journal",
                     "engadget",
                     "bloomberg",
-                ) ,
-                domains = null
+                )
             )
         }
     }.cachedIn(viewModelScope)
