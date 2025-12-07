@@ -1,29 +1,30 @@
 package com.example.newsapp.presentation.onboarding
 
 import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
 import com.example.newsapp.R
 
 data class Page(
-    val title: String,
-    val description: String,
+    @StringRes val title: Int,
+    @StringRes val description: Int,
     @DrawableRes val image: Int
 )
 
 
 val pages = listOf(
     Page(
-        title = "Stay Updated, Anytime",
-        description = "Get the latest news from trusted sources right at your fingertips, wherever you are.",
+        title = R.string.onboarding_page1_title,
+        description = R.string.onboarding_page1_description,
         image = R.drawable.onboarding1
     ),
     Page(
-        title = "News That Matters",
-        description = "Follow topics you care about and personalize your feed to match your interests.",
+        title = R.string.onboarding_page2_title,
+        description = R.string.onboarding_page2_description,
         image = R.drawable.onboarding2
     ),
     Page(
-        title = "Fast & Reliable",
-        description = "Enjoy breaking news alerts and in-depth articles, all in one easy-to-use app.",
+        title = R.string.onboarding_page3_title,
+        description = R.string.onboarding_page3_description,
         image = R.drawable.onboarding3
     )
 )

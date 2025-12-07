@@ -9,7 +9,6 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.example.newsapp.R
@@ -17,8 +16,6 @@ import com.example.newsapp.presentation.articledetailsscreen.SaveNewsViewModel
 import com.example.newsapp.utils.Dimens._16Dp
 import com.example.newsapp.utils.Dimens._24Dp
 import com.example.newsapp.utils.Dimens._24Sp
-import com.example.newsapp.presentation.homescreen.component.Articles
-import com.example.newsapp.ui.theme.NewsAppTheme
 
 
 @Composable
@@ -48,16 +45,6 @@ fun BookmarksScreen(
             articles = articles.value,
             navController = navController
         )
-    }
-
-}
-
-
-@Preview(showBackground = true)
-@Composable
-private fun BookmarksScreenPrev() {
-    NewsAppTheme {
-       // BookmarksScreen()
     }
 
 }

@@ -3,7 +3,6 @@ package com.example.newsapp.presentation.bookmarksscreen
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.example.newsapp.domain.model.ArticleUi

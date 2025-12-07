@@ -33,11 +33,8 @@ fun SearchScreen(
         FocusRequester()
     }
 
-    val keyboardController = LocalSoftwareKeyboardController.current
-
     LaunchedEffect(Unit) {
         focusRequester.requestFocus()
-        keyboardController?.show()
     }
 
    val query = searchViewModel.query.collectAsState()
@@ -65,7 +62,7 @@ fun SearchScreen(
             }
         )
 
-        if (query.value.isNotEmpty())
+        if (query.value.text.isNotEmpty())
             Articles(
                 news = items,
                 navController = navController

@@ -18,7 +18,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.unit.TextUnit
+import androidx.compose.ui.text.input.TextFieldValue
 import androidx.navigation.NavHostController
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.paging.compose.collectAsLazyPagingItems
@@ -64,11 +64,9 @@ fun HomeScreen(
         )
 
         SearchBarSection(
-            text = "",
+            text = TextFieldValue(""),
             readOnly = true,
-            onValueChange = {
-
-            },
+            onValueChange = {},
             onClick = {
                 navController.navigate(Route.SearchScreen.route)
             },

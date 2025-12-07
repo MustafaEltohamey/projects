@@ -5,8 +5,8 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
@@ -40,8 +40,9 @@ class MainActivity : ComponentActivity() {
 
                 val navController= rememberNavController()
 
-                Box (
-                    modifier = Modifier.fillMaxSize()
+                Surface (
+                    modifier = Modifier
+                        .fillMaxSize()
                 ){
                     OnNavGraph(
                         startDestination = viewModel.startDestination.value,

@@ -12,4 +12,12 @@
     <string name="star_desc">save as bookmarks article</string>
     <string name="share_desc">Share with others</string>
     <string name="earth_desc">Open in browser</string>
+
+    <string name="onboarding_page1_title">Stay Updated, Anytime</string>
+    <string name="onboarding_page1_description">Get the latest news from trusted sources right at your fingertips, wherever you are.</string>
+    <string name="onboarding_page2_title">News That Matters</string>
+    <string name="onboarding_page2_description">Follow topics you care about and personalize your feed to match your interests.</string>
+    <string name="onboarding_page3_title">Fast &amp; Reliable</string>
+    <string name="onboarding_page3_description">Enjoy breaking news alerts and in-depth articles, all in one easy-to-use app.</string>
+
 </resources>

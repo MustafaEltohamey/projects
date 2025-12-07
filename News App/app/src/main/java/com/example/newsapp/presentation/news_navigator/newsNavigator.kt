@@ -37,7 +37,8 @@ fun NewsNavigator() {
             if (isBottomBarVisible) {
                 BottomNavigationBar(
                     bottomNavigationItem = bottomNavigationList,
-                    navHostController = navController
+                    navHostController = navController,
+                    currentDestination = backStackState?.destination
                 )
             }
         }

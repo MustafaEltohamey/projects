@@ -21,16 +21,17 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.TextFieldValue
 import com.example.newsapp.R
 import com.example.newsapp.utils.Dimens._12Dp
 
 @Composable
 fun SearchBarSection(
     modifier: Modifier = Modifier,
-    text: String,
+    text: TextFieldValue,
     readOnly: Boolean,
     onClick: (() -> Unit)? = null,
-    onValueChange: (String) -> Unit ,
+    onValueChange: (TextFieldValue) -> Unit,
     onSearch: () -> Unit = {}
 ) {
 
@@ -43,7 +44,7 @@ fun SearchBarSection(
         OutlinedTextField(
             value = text,
             onValueChange = onValueChange,
-            modifier = modifier
+            modifier = Modifier
                 .fillMaxWidth(),
             readOnly = readOnly,
             placeholder = {

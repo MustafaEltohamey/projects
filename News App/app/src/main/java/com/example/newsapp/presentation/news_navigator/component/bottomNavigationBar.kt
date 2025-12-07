@@ -6,10 +6,9 @@ import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.navigation.NavDestination
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.currentBackStackEntryAsState
 
 
 data class BottomNavigationItem(
@@ -25,11 +24,12 @@ data class BottomNavigationItem(
 @Composable
 fun BottomNavigationBar(
      bottomNavigationItem: List<BottomNavigationItem>,
-     navHostController: NavHostController
+     navHostController: NavHostController,
+     currentDestination: NavDestination?,
 ) {
 
-    val navBackStackEntry by navHostController.currentBackStackEntryAsState()
-    val currentDestination = navBackStackEntry?.destination
+    //val navBackStackEntry by navHostController.currentBackStackEntryAsState()
+    //val currentDestination = navBackStackEntry?.destination
 
     NavigationBar (
         containerColor =  MaterialTheme.colorScheme.surface,
