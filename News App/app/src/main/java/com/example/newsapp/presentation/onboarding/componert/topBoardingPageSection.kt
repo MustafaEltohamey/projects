@@ -14,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import com.example.newsapp.R
 import com.example.newsapp.utils.Dimens._10Dp
@@ -36,21 +37,21 @@ fun TopBoardingSection(
             .fillMaxWidth()
             .fillMaxHeight(0.6f),
             painter = painterResource(page.image)
-            ,contentDescription = page.description,
+            ,contentDescription = stringResource(page.description),
             contentScale = ContentScale.Crop
         )
 
         Spacer(modifier = Modifier.height(_10Dp))
 
         Text(modifier = Modifier.padding(_6Dp),
-            text = page.title,
+            text = stringResource(page.title),
             color = colorResource(id = R.color.display_small),
             fontSize = _24Sp,
             fontWeight = FontWeight.Bold
         )
 
         Text(modifier = Modifier.padding(_6Dp),
-            text = page.description,
+            text = stringResource(page.description),
             color = colorResource(id = R.color.text_medium),
             fontSize = _24Sp
         )
